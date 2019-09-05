@@ -99,11 +99,11 @@ switch (ENVIRONMENT)
  */
 
 
-	$system_path = DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR ."system";
-	
+    $system_path = realpath(dirname(__FILE__) . "/../vendor/codeigniter/framework/system");
+
+
 	if (!is_dir($system_path)) {
-		// load composer
-		$system_path = "../vendor/codeigniter/framework/system";
+        $system_path = DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR ."system";
 	}
 
 /*
@@ -121,7 +121,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder =  DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR  .'application';
+	$application_folder = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR  .'application' . DIRECTORY_SEPARATOR);
 
 /*
  *---------------------------------------------------------------
@@ -237,7 +237,7 @@ switch (ENVIRONMENT)
 	define('BASEPATH', $system_path);
 
 	// Path to the front controller (this file) directory
-	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR);
+	define('FCPATH', realpath(dirname(__FILE__).DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR));
 
 	// Name of the "system" directory
 	define('SYSDIR', basename(BASEPATH));
@@ -273,7 +273,7 @@ switch (ENVIRONMENT)
 		exit(3); // EXIT_CONFIG
 	}
 
-	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
+	define('APPPATH', realpath($application_folder). DIRECTORY_SEPARATOR);
 
 	// The path to the "views" directory
 	if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))

@@ -1,7 +1,7 @@
 <?php
 
 
-class ChannalController
+class ChannalController extends CI_Controller
 {
 
 }
