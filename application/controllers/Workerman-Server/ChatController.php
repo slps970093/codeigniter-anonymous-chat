@@ -6,7 +6,7 @@
  * @another 小周
  */
 
-class WebSocketController extends  CI_Controller
+class ChatController extends  CI_Controller
 {
 
     public function __construct() {
@@ -18,6 +18,7 @@ class WebSocketController extends  CI_Controller
     }
 
     public function start() {
+
 
     }
 }
